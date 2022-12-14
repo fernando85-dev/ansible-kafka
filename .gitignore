@@ -1,0 +1,2 @@
+roles/confluent.variables/filter_plugins/*
+troubleshooting/*

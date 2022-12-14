@@ -1,0 +1,12 @@
+---
+- name: Copy Cert
+  copy:
+    src: cert_CertTrusted-WebSSL-FW-UnimedPOA.crt
+    dest: /etc/pki/ca-trust/source/anchors/
+  tags:
+  - install-cert
+
+- name: Update ca-trust
+  shell: /bin/update-ca-trust extract
+  tags:
+  - install-cert

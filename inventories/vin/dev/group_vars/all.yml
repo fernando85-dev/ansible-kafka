@@ -1,0 +1,39 @@
+---
+sasl_scram256_users:
+  pocptu-producer:
+    principal: pocptu_producer
+    password: pocptu_producer
+  pocptu-consumer:
+    principal: pocptu_consumer
+    password: pocptu_consumer
+  rh2plano:
+    principal: rh2plano
+    password: rh2plano
+  intercambio-exame:
+    principal: intercambio_exame_dev
+    password: intercambio_exame_passw0rd
+
+sasl_scram256_users_acl:
+  graylog:
+    principal: graylog
+    acl: --add --topic 'logs' --group '*' --operation all
+  pocptu-producer:
+    principal: pocptu_producer
+    acl: -add --topic 'ptu-input.v1' --topic 'ptu-output.v1' --group '*' --operation all
+  pocptu-consumer:
+    principal: pocptu_consumer
+    acl: -add --topic 'ptu-input.v1' --topic 'ptu-output.v1' --group '*' --operation all
+  rh2plano:
+    principal: rh2plano
+    acl: -add --topic 'rh2-msplano-input-incluir-beneficiario.v1' --topic 'rh2-msplano-output-incluir-beneficiario' --group '*' --operation all
+  intercambio-exame-guia:
+    principal: intercambio_guia
+    acl: -add --topic 'intercambio-exame-guia-input.v1' --topic 'intercambio-exame-guia-output' --group '*' --operation all
+    acl: -add --topic 'intercambio-exame-guia-input.v1' --topic 'intercambio-exame-guia-output' --group '*' --operation all
+  intercambio-exame-execucao:
+    principal: intercambio_execucao
+    acl: -add --topic 'intercambio-execucao-input.v1' --topic 'intercambio-execucao-output' --group '*' --operation all
+  intercambio-exame:
+    principal: intercambio_exame_dev
+    acl: -add --topic 'intercambio-exame-guias-input.v1' --allow-principal User:intercambio_exame_dev --operation read
+    acl: -add --topic 'intercambio-exame-execucao-input.v1' --allow-principal User:intercambio_exame_dev --operation read
